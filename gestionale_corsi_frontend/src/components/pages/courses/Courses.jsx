@@ -8,15 +8,15 @@ export function Courses(){
 
     const courses = [
         {
-            title: "Analisi",
-            sottotitolo: "analisi matematica",
-            body: "corso di matematica di base della durata di 5 settimane"
+            titolo: "Html & css",
+            descrizione: "linguaggi di markup",
+            descrizioneLunga: "L'HTML è un linguaggio di formattazione che descrive le modalità di impaginazione o visualizzazione grafica (layout) del contenuto, testuale e non, di una pagina web attraverso tag di formattazione. Il CSS è un linguaggio usato per definire la formattazione di documenti HTML, XHTML e XML, ad esempio i siti web e relative pagine web."
 
         },
         {
-            title: "fisica",
-            sottotitolo: "fisica uno",
-            body: "corso di fisica di base della durata di 4 settimane"
+            titolo: "basi di dati",
+            descrizione: "linguaggio di realizzarione e manipolazione di database",
+            descrizioneLunga: "La progettazione delle basi di dati si basa sull'applicazione di tecniche formali in congiunzione a considerazioni pratiche derivate dalla natura dei dati stessi. In fase di progettazione si affrontano quindi problemi in materia di modellazione, rappresentazione, archiviazione e accesso ai dati, oltre che della loro sicurezza, privatezza ed integrità."
 
         }
     ]
@@ -26,9 +26,9 @@ export function Courses(){
             {courses.map((course,key) => (
                 <Card 
                     key={key}
-                    titolo={course.title} 
-                    sottotitolo={course.sottotitolo} 
-                    body={course.body}>
+                    titolo={course.titolo} 
+                    sottotitolo={course.descrizione} 
+                    body={course.descrizioneLunga}>
                 </Card>
 
             ))}

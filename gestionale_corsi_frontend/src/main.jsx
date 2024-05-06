@@ -28,14 +28,14 @@ const router = createBrowserRouter([
                           element: <Courses/>
                       }
                      ]
+                  },
+                  {
+                      path:"*",
+                      element: <NotFound/>
                   }
               ]
           }
       ]
-  },
-  {
-      path:"*",
-      element: <NotFound/>
   }
 ]);
 
