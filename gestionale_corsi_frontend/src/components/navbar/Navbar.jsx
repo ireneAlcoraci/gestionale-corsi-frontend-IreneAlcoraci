@@ -10,8 +10,9 @@ export function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
-                        <NavLink className="nav-link" to="/courses" >Courses</NavLink>
+                        <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
+                        <NavLink className="nav-link" to="/courses" >Corsi</NavLink>
+                        <NavLink className="nav-link" to="/contacts" >Contatti</NavLink>
                     </div>
                 </div>
             </div>

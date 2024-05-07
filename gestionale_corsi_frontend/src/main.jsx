@@ -5,9 +5,10 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from './components/layouts/mainLayout/Layout';
-import { Home } from './components/pages/home/Home';
-import { Courses } from './components/pages/courses/Courses';
-import { NotFound } from './components/pages/notFound/NotFount';
+import { Home } from './pages/home/Home';
+import { Courses } from './pages/courses/Courses';
+import { Contacts } from './pages/contacts/Contacts';
+import {NotFound} from './pages/notFound/NotFount';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,12 @@ const router = createBrowserRouter([
                           element: <Courses/>
                       }
                      ]
+                  },
+                  {
+
+                    path: "contacts",
+                    element: <Contacts />
+
                   },
                   {
                       path:"*",
