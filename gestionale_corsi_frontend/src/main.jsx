@@ -4,49 +4,70 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { Layout } from './components/layouts/mainLayout/Layout';
 import { Home } from './pages/home/Home';
 import { Courses } from './pages/courses/Courses';
 import { Contacts } from './pages/contacts/Contacts';
-import {NotFound} from './pages/notFound/NotFount';
+import { NotFound } from './pages/notFound/NotFount';
+import { Login } from './pages/login/Login';
+import { Registration } from './pages/registration/Registration';
+import { UserList } from './pages/UserList/UserList';
 
 const router = createBrowserRouter([
-  {
-      element: <Layout/>,
-      children:[
-          {        
-              path: "/",
-              children: [
-                  {
-                      path: "",
-                      element: <Home/>
-                  },
-                  {
-                     path: "courses/",
-                     children: [
-                      {
-                          path: "",
-                          element: <Courses/>
-                      }
-                     ]
-                  },
-                  {
+    {
+        element: <Layout />,
+        children: [
+            {
+                path: "/",
+                children: [
+                    {
+                        path: "",
+                        element: <Home />
+                    },
+                    {
+                        path: "login",
+                        children:[
+                            {
+                                path:"",
+                                element: <Login />
+                            },
+                            {
+                                path:"userList",
+                                element: <UserList />
+                            }
 
-                    path: "contacts",
-                    element: <Contacts />
-
-                  },
-                  {
-                      path:"*",
-                      element: <NotFound/>
-                  }
-              ]
-          }
-      ]
-  }
+                        ]
+                        
+                    },
+                    {
+                        path: "registration",
+                        element: <Registration />
+                    },
+                    {
+                        path: "courses/",
+                        children: [
+                            {
+                                path: "",
+                                element: <ProtectedRoute> <Courses /></ProtectedRoute>
+                            }
+                        ]
+                    },
+                    {
+                        path: "contacts",
+                        element: <Contacts />
+                    },
+                    {
+                        path: "*",
+                        element: <NotFound />
+                    }
+                ]
+            }
+        ]
+    }
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}/>  
+    <RouterProvider router={router} />
 )

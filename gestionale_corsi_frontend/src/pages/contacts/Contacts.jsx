@@ -1,6 +1,15 @@
-import {ContactForm} from '../components/contactForm/ContactForm'
+import {ContactForm} from '../../components/contactForm/ContactForm'
+import { useEffect } from 'react';
 
 
 export function Contacts(){
-    return <ContactForm/>
+    useEffect(() => {
+        document.title = "Contacts";
+    }, []);
+
+    return (
+        <div>
+            <ContactForm/>
+        </div>
+    );
 }
