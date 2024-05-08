@@ -14,6 +14,20 @@ export async function userLogin(obj) {
     return await response.json();
 }
 
+export async function userLogout(token) {
+
+    const response = await fetch("http://localhost:8080/api/utente/logout", {
+        mode: "cors",
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Autorization": `Bearer ${token}`
+        }
+    });
+
+    return await response;
+}
+
 export async function userRegistration(obj) {
 
     try {

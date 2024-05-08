@@ -1,13 +1,14 @@
 import { AuthContext } from "./AuthContext";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 export function AuthContextProvider({children}){
 
     const[user,setUser] = useState({
-        firstName: "irene",
-        lastName: "alcoraci",
-        email: "irene@mail.com",
-        isAuthorized: true
+        nome: Cookies.get("nome"),
+        cognome: Cookies.get("cognome"),
+        email: Cookies.get("email"),
+        ruolo: Cookies.get("ruolo")
     });
 
     return(
