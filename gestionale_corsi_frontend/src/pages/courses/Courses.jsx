@@ -1,34 +1,31 @@
 import { useEffect } from "react";
+import { useState } from "react";
 import { Card } from "../../components/card/Card";
+import { getCorsesList } from "../../service/RESTService";
+import Cookies from "js-cookie";
 
 export function Courses(){
+       
     useEffect(()=>{
-        document.title = "Courses"
+        document.title = "Courses";
+        handleChange();
       },[]);
 
-    const courses = [
-        {
-            titolo: "Html & css",
-            descrizione: "linguaggi di markup",
-            descrizioneLunga: "L'HTML è un linguaggio di formattazione che descrive le modalità di impaginazione o visualizzazione grafica (layout) del contenuto, testuale e non, di una pagina web attraverso tag di formattazione. Il CSS è un linguaggio usato per definire la formattazione di documenti HTML, XHTML e XML, ad esempio i siti web e relative pagine web."
+    const [courseListData, setCourseListData] = useState([]);
 
-        },
-        {
-            titolo: "basi di dati",
-            descrizione: "linguaggio di realizzarione e manipolazione di database",
-            descrizioneLunga: "La progettazione delle basi di dati si basa sull'applicazione di tecniche formali in congiunzione a considerazioni pratiche derivate dalla natura dei dati stessi. In fase di progettazione si affrontano quindi problemi in materia di modellazione, rappresentazione, archiviazione e accesso ai dati, oltre che della loro sicurezza, privatezza ed integrità."
-
-        }
-    ]
-
+    const handleChange = async () => {
+        const courseList = await getCorsesList(Cookies.get("token"));
+        setCourseListData(courseList);
+    }
     return (        
         <div className="row">
-            {courses.map((course,key) => (
+            {courseListData.map((course,key) => (
                 <Card 
                     key={key}
-                    titolo={course.titolo} 
-                    sottotitolo={course.descrizione} 
-                    body={course.descrizioneLunga}>
+                    titolo={course.nomeCorso} 
+                    sottotitolo={course.descrizioneBreve} 
+                    body={course.descrizioneCompleta}>
+                    durata={course.durata}
                 </Card>
 
             ))}

@@ -2,7 +2,7 @@ export function validationFormRegistration(values){
     const errors = {};
 
     const emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$/;
-    const passwordPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!#$%&?]).{8,}$/;
 
         if(values.nome === ""){
             errors.nome = "Inserire nome"

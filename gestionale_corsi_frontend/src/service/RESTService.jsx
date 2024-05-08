@@ -11,7 +11,13 @@ export async function userLogin(obj) {
         }
     })
 
-    return await response.json();
+    if(response.ok){
+        return await response.json();
+    }else{
+        return "";
+    }
+
+   
 }
 
 export async function userLogout(token) {
@@ -21,7 +27,7 @@ export async function userLogout(token) {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Autorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         }
     });
 
@@ -46,7 +52,7 @@ export async function userRegistration(obj) {
         if (response.ok) {
             return await response.json();
         } else {
-            throw new Error(`Errore in fase di registrazione: ${response.status}`);
+            return "";
         }
     } catch (error) {
         throw new Error(`Errore in fase di registrazione catch: ${response.status}`);
@@ -60,34 +66,48 @@ export async function getAllUsers() {
         method: "GET"
     });
 
+ 
     return await response.json();
 }
 
 export async function getCorsesList(token) {
-
+    const bearer = "Bearer " + token;
     const response = await fetch("http://localhost:8080/api/corso/corsi", {
         mode: "cors",
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Autorization": token
+            "Authorization": bearer
         }
     });
 
-    return await response.json();
+    if(response.ok){
+        
+        return await response.json();
+     
+    }
+
 }
 
 
-export async function post(obj) {
+export async function updateUser(obj) {
     const jsonBody = JSON.stringify(obj);
 
-    const response = await fetch("http://localhost:8080/api/utente/login", {
+    const response = await fetch("http://localhost:8080/api/utente/update", {
         mode: "cors",
-        method: "POST",
+        method: "PUT",
         body: jsonBody,
         headers: {
             "Content-Type": "application/json",
-            "Autorization": token
+
         }
     })
+
+    if(response.ok){
+        return await response.json();
+    }else{
+        return "";
+    }
+
+   
 }

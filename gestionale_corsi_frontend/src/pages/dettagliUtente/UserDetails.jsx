@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 
 export function UserDetails(){
     const navigateTo = useNavigate();
-    const {user} = useContext(AuthContext);
+    const {user, setUser} = useContext(AuthContext);
     
 
     useEffect(() => {
@@ -19,7 +19,14 @@ export function UserDetails(){
         const response = userLogout(Cookies.get("token"));
         
         if(response.ok){
-            Cookies.remove();
+            Cookies.remove("token");
+            setUser({
+                nome: "",
+                cognome: "",
+                email: "",
+                ruolo: []
+            });
+
             navigateTo("/login")
         }
 
@@ -28,14 +35,14 @@ export function UserDetails(){
 
     const handleClickModifica = () =>{
         
-            navigateTo("/login")
+            navigateTo("/login/userDetails/modification")
         
     }
 
     return(
-        <div className="container mt-5">
+        <div className="container mt-5 position-relative">
             <h1>Benvenuto {user.nome}&nbsp;{user.cognome}</h1>
-            <button className="btn btn-lg btn-primary position-absolute top-0 end-0" onClick={handleClick}>Logout</button>
+            <button className="btn btn-lg btn-primary position-absolute top-0 end-0" style={{marginTop: "5rem"}} onClick={handleClick}>Logout</button>
             
             
             <div className="group-form position-absolute top-50 start-50 translate-middle">
