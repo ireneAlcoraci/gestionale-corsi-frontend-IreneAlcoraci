@@ -15,6 +15,7 @@ export function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
+                        {user.ruolo == "Admin"? <NavLink className="nav-link" to="login/userDetails" >Dettagli utente</NavLink> : ""}
                         {user.ruolo == "Admin"? <NavLink className="nav-link" to="/courses" >Corsi</NavLink> : ""}
                         {user.ruolo == "Admin"? <NavLink className="nav-link" to="login/userList" >Lista Utenti</NavLink> : ""}
                         <NavLink className="nav-link" to="/contacts" >Contatti</NavLink>

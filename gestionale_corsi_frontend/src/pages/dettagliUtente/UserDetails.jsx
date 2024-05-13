@@ -15,8 +15,8 @@ export function UserDetails(){
         document.title = "User Details"
     }, []);
 
-    const handleClick = () =>{
-        const response = userLogout(Cookies.get("token"));
+    const handleClick = async () =>{
+        const response = await userLogout(Cookies.get("token"));
         
         if(response.ok){
             Cookies.remove("token");

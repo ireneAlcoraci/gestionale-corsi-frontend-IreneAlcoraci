@@ -24,8 +24,9 @@ export function Courses(){
                     key={key}
                     titolo={course.nomeCorso} 
                     sottotitolo={course.descrizioneBreve} 
-                    body={course.descrizioneCompleta}>
-                    durata={course.durata}
+                    body={course.descrizioneCompleta}
+                    durata={course.durata}>
+                   
                 </Card>
 
             ))}

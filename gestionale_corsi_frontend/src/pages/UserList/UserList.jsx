@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Table } from "../../components/table/Table";
 import { getAllUsers } from "../../service/RESTService";
 
 export function UserList() {
+    const navigateTo = useNavigate();
+
     useEffect(() => {
         document.title = "User List";
         handleChange();
@@ -15,10 +18,15 @@ export function UserList() {
         setUserListData(userList);
     }
 
+    const handleClick = () =>{
+        navigateTo("/login/userList/searchUser")
+    }
+
 
     return (
         <div className="container">
             <h1 className="text-center my-5">Lista Utenti</h1>
+            <button className="btn btn-lg btn-primary" style={{margin: "1rem 0rem"}} onClick={handleClick}>Trova Utente</button>
             <table className="table" id="idTabella" >
                 <thead>
                     <tr>
@@ -36,7 +44,7 @@ export function UserList() {
                         nome={user.nome}
                         cognome={user.cognome}
                         email={user.email}
-                        ruolo={[user.ruoli]}/>
+                        ruolo={user.ruoli.map(ruoli => ruoli.tipologia).join(" , ")}/>
                  
 
                 ))}

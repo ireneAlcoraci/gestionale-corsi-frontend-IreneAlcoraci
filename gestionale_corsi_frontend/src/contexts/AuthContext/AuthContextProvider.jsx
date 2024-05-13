@@ -9,7 +9,7 @@ export function AuthContextProvider({children}){
         cognome: "",
         email: "",
         ruolo: [],
-        isAuthorized: true
+        isAuthorized: false
     });
 
     return(

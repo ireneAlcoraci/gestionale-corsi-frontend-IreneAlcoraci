@@ -12,7 +12,7 @@ export function RegistrationForm(){
     });
 
     const [errors, setErrors] = useState({});
-    const [registrationError, setRegistrationError] = useState(false);
+    const [registrationError, setRegistrationError] = useState("");
     
 
     const handleChange = (e) =>{
@@ -20,14 +20,14 @@ export function RegistrationForm(){
         setFormRegistrationData({...formRegistationData, [name]:value});
     }
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
         console.table(formRegistationData);
         setErrors(validationFormRegistration(formRegistationData));
    
 
         console.log(errors)
-        const response = userRegistration(formRegistationData);
+        const response = await userRegistration(formRegistationData);
         console.log(response)
         if(response == ""){
             setRegistrationError(true);
@@ -71,6 +71,8 @@ export function RegistrationForm(){
             </div>
             <button name="ok" id="ok" type="submit" className="btn btn-primary mt-3">Invia</button>
             <div style={{backgroundColor: " rgba(243, 149, 149)", marginTop: "1rem", textAlign:"center"}}>{handleError()}</div>
+            
+            
         </form>
     );
 }

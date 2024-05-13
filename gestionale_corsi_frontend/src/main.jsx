@@ -16,6 +16,8 @@ import { Registration } from './pages/registration/Registration';
 import { UserList } from './pages/UserList/UserList';
 import { UserDetails } from './pages/dettagliUtente/UserDetails';
 import { UserModification } from './pages/UserModification/UserModification';
+import { DeleteUser } from './pages/deleteUser/DeleteUser';
+import { SearchUser } from './pages/searchUser/SearchUser';
 
 const router = createBrowserRouter([
     {
@@ -52,7 +54,21 @@ const router = createBrowserRouter([
                                                         
                             {
                                 path:"userList",
-                                element: <UserList />
+                                children:[
+                                    {
+                                        path: "",
+                                        element: <ProtectedRoute><UserList /></ProtectedRoute> 
+                                    },
+                                    {
+                                        path: "deleteUser/:email",
+                                        element: <ProtectedRoute> <DeleteUser /></ProtectedRoute>
+                                    },
+                                    {
+                                        path: "searchUser",
+                                        element: <ProtectedRoute> <SearchUser /></ProtectedRoute>
+                                    }
+                                ]
+                                
                             }
 
                         ]

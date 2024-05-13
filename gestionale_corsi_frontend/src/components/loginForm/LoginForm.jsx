@@ -41,7 +41,8 @@ export function LoginForm() {
                 nome: nome,
                 cognome: cognome,
                 email: email,
-                ruolo: ruoli
+                ruolo: ruoli,
+                isisAuthorized: true
             });
 
 

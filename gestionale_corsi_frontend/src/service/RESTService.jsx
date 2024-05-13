@@ -31,7 +31,7 @@ export async function userLogout(token) {
         }
     });
 
-    return await response;
+    return response;
 }
 
 export async function userRegistration(obj) {
@@ -55,7 +55,7 @@ export async function userRegistration(obj) {
             return "";
         }
     } catch (error) {
-        throw new Error(`Errore in fase di registrazione catch: ${response.status}`);
+        throw new Error(`Errore in fase di registrazione catch`);
     }
 }
 
@@ -110,4 +110,32 @@ export async function updateUser(obj) {
     }
 
    
+}
+
+export async function deleteUser(email) {
+
+    const response = await fetch(`http://localhost:8080/api/utente/delete/${email}`, {
+        mode: "cors",
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        
+        }
+    });
+
+    return response;
+}
+
+export async function findUserByEmail(email) {
+
+    const response = await fetch(`http://localhost:8080/api/utente/find?email=${email}`, {
+        mode: "cors",
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+           
+        }
+    });
+
+    return await response.json();
 }
